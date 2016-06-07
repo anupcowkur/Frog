@@ -1,7 +1,7 @@
 require 'optparse'
 
 class IOHandler
-  def self.get_options
+  def get_options
     options = {exact: false}
     OptionParser.new do |opts|
       opts.banner = "Usage: droiddocs.rb [options] search_term"
@@ -19,7 +19,7 @@ class IOHandler
     return options
   end
 
-  def self.get_search_term
+  def get_search_term
     search_term = ARGV[0]
 
     abort "You need to provide a class to search for" if search_term.nil?
@@ -29,7 +29,7 @@ class IOHandler
 
   #response = HTTParty.get "#{BASE_URL}/reference/lists.js"
 
-  def self.get_links_from_file
+  def get_links_from_file
     file = File.open(File.expand_path("../assets/lists.js", File.dirname(__FILE__)), "r")
     contents = file.read
     file.close

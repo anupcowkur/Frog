@@ -1,14 +1,13 @@
-require 'launchy'
 require_relative 'constants.rb'
 
 class FuzzySearcher
-  def self.search (links, search_term)
+  def search (links, search_term)
 
     # Grep the links array to fuzzily match our search term
     filtered_links = links.grep(/#{search_term}/io)
 
     # Abort if we don't find anything
-    abort "Sorry. It looks like we couldn't what you were looking for" if filtered_links.empty?
+    abort "Sorry. It looks like we couldn't find what you were looking for" if filtered_links.empty?
 
     # Create link and index hashes
     # links_hash will map each class name to it's relative URL
@@ -27,12 +26,11 @@ class FuzzySearcher
     # Append to base URL to form complete URL
     target_link = "#{Constants::BASE_URL}/#{relative_url}"
 
-    # Launch browser
-    Launchy.open(target_link)
+    return target_link
 
   end
 
-  def self.create_link_and_index_hashes(filtered_links)
+  def create_link_and_index_hashes(filtered_links)
     # Create 2 hashes
     links_hash = Hash.new
     index_hash = Hash.new
@@ -54,14 +52,14 @@ class FuzzySearcher
     return links_hash, index_hash
   end
 
-  def self.show_selection_options(links_hash)
+  def show_selection_options(links_hash)
     puts "Enter the index of the class you want. ex: Enter 1 if you wish to select the first option."
     links_hash.keys.each_with_index do |class_name, i|
       puts "#{i+1}: #{class_name}"
     end
   end
 
-  def self.get_verified_user_input(selection_options_size)
+  def get_verified_user_input(selection_options_size)
     begin
       index = STDIN.gets.chomp.to_i - 1
 
