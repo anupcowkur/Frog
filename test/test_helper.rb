@@ -9,3 +9,16 @@ Minitest::Reporters.use!
 require 'minitest/autorun'
 
 require 'byebug'
+
+def fake_io(text)
+  begin
+    $stdin = StringIO.new
+    $stdin.puts(text)
+    $stdin.rewind
+    $stdout = StringIO.new
+    yield
+  ensure
+    $stdin = STDIN
+    $stdout = STDOUT
+  end
+end

@@ -1,13 +1,20 @@
 require_relative 'constants.rb'
 
 class FuzzySearcher
+  def initialize(error_handler)
+    @error_handler = error_handler
+  end
+
   def search (links, search_term)
 
     # Grep the links array to fuzzily match our search term
-    filtered_links = links.grep(/#{search_term}/io)
+    filtered_links = links.grep(/#{search_term}/i)
 
-    # Abort if we don't find anything
-    abort "Sorry. It looks like we couldn't find what you were looking for" if filtered_links.empty?
+    # Error out and return if we don't find anything
+    if filtered_links.empty?
+      @error_handler.handle_doc_not_found 
+      return
+    end
 
     # Create link and index hashes
     # links_hash will map each class name to it's relative URL
@@ -60,17 +67,13 @@ class FuzzySearcher
   end
 
   def get_verified_user_input(selection_options_size)
-    begin
-      index = STDIN.gets.chomp.to_i - 1
-
-      if index < 0 || index >= selection_options_size
-        raise "Index out of bounds"
-      end
-
-      return index
-    rescue
-      abort "Sorry. It looks like you didn't enter the correct index"
+    index = $stdin.gets.chomp.to_i - 1
+    if index < 0 || index >= selection_options_size
+      @error_handler.handle_incorrect_index
+      return
     end
+
+    return index
   end
 
 end

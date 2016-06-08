@@ -1,6 +1,11 @@
 require 'optparse'
 
 class IOHandler
+
+  def initialize(error_handler)
+    @error_handler = error_handler
+  end
+
   def get_options
     options = {exact: false}
     OptionParser.new do |opts|
@@ -22,12 +27,13 @@ class IOHandler
   def get_search_term
     search_term = ARGV[0]
 
-    abort "You need to provide a class to search for" if search_term.nil?
+    if search_term.nil?
+      @error_handler.handle_no_search_term
+      return
+    end
 
     return search_term
   end
-
-  #response = HTTParty.get "#{BASE_URL}/reference/lists.js"
 
   def get_links_from_file
     file = File.open(File.expand_path("../assets/lists.js", File.dirname(__FILE__)), "r")

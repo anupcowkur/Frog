@@ -5,9 +5,9 @@ class SearchRouter
   	@fuzzy_searcher = fuzzy_searcher
   end
 
-  def delegate_to_appropriate_searcher(options, search_term, links)
+  def delegate_to_appropriate_searcher(exact, search_term, links)
     # If it's an exact search
-    if options[:exact]
+    if exact
       @exact_searcher.search(links, search_term)
     else
       # If it's a fuzzy search
