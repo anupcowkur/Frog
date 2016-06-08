@@ -6,7 +6,7 @@ class ExactSearcher
     @error_handler = error_handler
   end
 
-  def search (links, search_term)
+  def search (search_term, links)
     # Grep the links array to exactly match our search term
     filtered_links = links.grep(/\/#{search_term}.html\"/i)
     

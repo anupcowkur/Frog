@@ -12,11 +12,11 @@ class TestExactSearcher < Minitest::Test
   def test_that_it_errors_out_on_not_finding_search_term 
     mock_error_handler = Minitest::Mock::new
     mock_error_handler.expect :handle_doc_not_found, 0
-    ExactSearcher.new(mock_error_handler).search(@links, "goooo")
+    ExactSearcher.new(mock_error_handler).search("goooo", @links)
     mock_error_handler.verify    
   end
 
   def test_that_it_returns_correct_url_on_finding_search_term
-    assert_match "https://developer.android.com/reference/android/accounts/Account.html", ExactSearcher.new(ErrorHandler.new).search(@links, "Account")
+    assert_match "https://developer.android.com/reference/android/accounts/Account.html", ExactSearcher.new(ErrorHandler.new).search("Account", @links)
   end
 end
