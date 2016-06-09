@@ -5,6 +5,7 @@ require_relative 'fuzzy_searcher'
 require_relative 'browser_launcher'
 require_relative 'exiter'
 require_relative 'options_helper'
+require_relative 'search_term_helper'
 
 module DroidDocs
 
@@ -13,6 +14,7 @@ module DroidDocs
   	def initialize
   		@exiter = Exiter.new
       @options_helper = OptionsHelper.new(@exiter)
+      @search_term_helper = SearchTermHelper.new(@exiter)
   		@io_handler = IOHandler.new(@exiter)
   		@exact_searcher = ExactSearcher.new(@exiter)
   		@fuzzy_searcher = FuzzySearcher.new(@exiter)
@@ -23,7 +25,7 @@ module DroidDocs
     def start
       options = @options_helper.get_options
 
-      search_term = @io_handler.get_search_term
+      search_term = @search_term_helper.get_search_term
 
       links = @io_handler.get_links_from_file
 
