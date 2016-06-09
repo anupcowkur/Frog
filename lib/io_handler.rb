@@ -2,33 +2,15 @@ require 'optparse'
 
 class IOHandler
 
-  def initialize(error_handler)
-    @error_handler = error_handler
-  end
-
-  def get_options
-    options = {exact: false}
-    OptionParser.new do |opts|
-      opts.banner = "Usage: droiddocs.rb [options] search_term"
-
-      opts.on("-e", "--exact", "Search for the exact class") do |v|
-        options[:exact] = true
-      end
-
-      opts.on('-h', '--help', 'Displays Help') do
-        puts opts
-        exit
-      end
-    end.parse!
-
-    return options
+  def initialize(exiter)
+    @exiter = exiter
   end
 
   def get_search_term
     search_term = ARGV[0]
 
     if search_term.nil?
-      @error_handler.handle_no_search_term
+      @exiter.exit_due_to_no_search_term
       return
     end
 

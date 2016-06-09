@@ -1,6 +1,6 @@
 require 'test_helper'
-require 'exact_searcher.rb'
-require 'error_handler.rb'
+require 'exact_searcher'
+require 'exiter'
 
 class TestExactSearcher < Minitest::Test
   def setup
@@ -10,13 +10,13 @@ class TestExactSearcher < Minitest::Test
   end
 
   def test_that_it_errors_out_on_not_finding_search_term 
-    mock_error_handler = Minitest::Mock::new
-    mock_error_handler.expect :handle_doc_not_found, 0
-    ExactSearcher.new(mock_error_handler).search("goooo", @links)
-    mock_error_handler.verify    
+    mock_exiter = Minitest::Mock::new
+    mock_exiter.expect :exit_due_to_doc_not_found, 0
+    ExactSearcher.new(mock_exiter).search("goooo", @links)
+    mock_exiter.verify    
   end
 
   def test_that_it_returns_correct_url_on_finding_search_term
-    assert_match "https://developer.android.com/reference/android/accounts/Account.html", ExactSearcher.new(ErrorHandler.new).search("Account", @links)
+    assert_equal "https://developer.android.com/reference/android/accounts/Account.html", ExactSearcher.new(Exiter.new).search("Account", @links)
   end
 end

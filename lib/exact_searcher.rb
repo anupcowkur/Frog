@@ -1,9 +1,9 @@
-require_relative 'constants.rb'
+require_relative 'constants'
 
 class ExactSearcher
 
-  def initialize(error_handler)
-    @error_handler = error_handler
+  def initialize(exiter)
+    @exiter = exiter
   end
 
   def search (search_term, links)
@@ -12,7 +12,7 @@ class ExactSearcher
     
     # Handle error and return if we don't find anything
     if filtered_links.empty?
-      @error_handler.handle_doc_not_found
+      @exiter.exit_due_to_doc_not_found
       return
     end
 

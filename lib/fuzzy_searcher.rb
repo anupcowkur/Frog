@@ -1,8 +1,8 @@
-require_relative 'constants.rb'
+require_relative 'constants'
 
 class FuzzySearcher
-  def initialize(error_handler)
-    @error_handler = error_handler
+  def initialize(exiter)
+    @exiter = exiter
   end
 
   def search (search_term, links)
@@ -12,7 +12,7 @@ class FuzzySearcher
 
     # Error out and return if we don't find anything
     if filtered_links.empty?
-      @error_handler.handle_doc_not_found 
+      @exiter.exit_due_to_doc_not_found 
       return
     end
 
@@ -69,7 +69,7 @@ class FuzzySearcher
   def get_verified_user_input(selection_options_size)
     index = $stdin.gets.chomp.to_i - 1
     if index < 0 || index >= selection_options_size
-      @error_handler.handle_incorrect_index
+      @exiter.exit_due_to_incorrect_index
       return
     end
 
