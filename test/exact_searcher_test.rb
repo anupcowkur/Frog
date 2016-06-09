@@ -4,7 +4,7 @@ require 'exiter'
 
 class TestExactSearcher < Minitest::Test
   def setup
-    file = File.open(File.expand_path('../test/fixtures/test_links.js', File.dirname(__FILE__)), "r")
+    file = File.open(File.expand_path('../test/fixtures/test_links_subset.js', File.dirname(__FILE__)), "r")
     @links = file.read.split("\n")
     file.close
   end
