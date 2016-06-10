@@ -1,4 +1,4 @@
-require_relative 'constants'
+require 'constants'
 
 class ExactSearcher
 

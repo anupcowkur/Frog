@@ -1,4 +1,4 @@
-require_relative 'starter'
+require 'starter'
 
 # Initialize dependencies and start the program
 exiter = Exiter.new

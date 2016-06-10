@@ -1,4 +1,4 @@
-require_relative 'exiter'
+require 'exiter'
 
 class SearchTermHelper
   def initialize(exiter)

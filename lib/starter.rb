@@ -1,11 +1,11 @@
 require_relative 'search_router'
 require_relative 'exact_searcher'
 require_relative 'fuzzy_searcher'
-require_relative 'browser_launcher'
-require_relative 'exiter'
-require_relative 'options_helper'
-require_relative 'search_term_helper'
-require_relative 'links_helper'
+require 'browser_launcher'
+require 'exiter'
+require 'options_helper'
+require 'search_term_helper'
+require 'links_helper'
 
 class Starter
   def initialize(exiter,
