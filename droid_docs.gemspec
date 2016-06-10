@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'droid_docs/version.rb'
+require 'constants'
 
 Gem::Specification.new do |spec|
   spec.name          = "droid_docs"
-  spec.version       = ::DroidDocs::VERSION
+  spec.version       = ::Constants::VERSION
   spec.authors       = ["Anup Cowkur"]
   spec.email         = ["anupcowkur89@gmail.com"]
 
