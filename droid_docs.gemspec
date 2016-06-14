@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   end
 
   all_files          = `git ls-files -z`.split("\x0")
-  spec.files         = all_files.grep(%r{^(bin|lib)/})
+  spec.files         = all_files.grep(%r{^(bin|lib|assets)/})
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
