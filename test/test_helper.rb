@@ -5,6 +5,7 @@ require 'constants'
 require "minitest/reporters"
 Minitest::Reporters.use!
 require 'minitest/autorun'
+require 'mocha/mini_test'
 
 require 'byebug'
 

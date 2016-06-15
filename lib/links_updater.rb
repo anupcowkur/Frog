@@ -4,6 +4,13 @@ require 'constants'
 
 class LinksUpdater
 
+  attr_reader :timestamp_file_path, :links_file_path
+
+  def initialize()
+    @timestamp_file_path = File.expand_path("../assets/last_updated.txt", File.dirname(__FILE__))
+    @links_file_path = File.expand_path("../assets/lists.js", File.dirname(__FILE__))
+  end
+
   def update_links_if_needed
     if is_time_to_update?
       update_links_from_website
@@ -11,8 +18,9 @@ class LinksUpdater
     end
   end
 
+  private
   def is_time_to_update?
-    timestamp = File.open(File.expand_path("../assets/last_updated.txt", File.dirname(__FILE__)), &:gets)
+    timestamp = File.read(@timestamp_file_path)
 
     last_updated = DateTime.parse(timestamp)
 
@@ -21,18 +29,17 @@ class LinksUpdater
     return DateTime.now  > one_month_from_last_updated
   end
 
+  private
   def update_links_from_website
     # Get the latest links from the website
     response = Net::HTTP.get_response(URI.parse(Constants::LINKS_URL))
 
     # Write them to file
-    file_path = File.expand_path("../assets/lists.js", File.dirname(__FILE__))
-    File.open(file_path,'w') do |f|
-      f.write response.body
-    end
+    File.write(@links_file_path, response.body)
   end
 
+  private
   def update_timestamp
-    File.write(File.expand_path("../assets/last_updated.txt", File.dirname(__FILE__)), "#{DateTime.now}")
+    File.write(@timestamp_file_path, "#{DateTime.now}")
   end
 end
