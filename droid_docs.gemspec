@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "minitest-reporters", '~> 1.1', '>= 1.1.9'
   spec.add_development_dependency "byebug", '~> 9.0', '>= 9.0.5'
-  spec.add_development_dependency "mocha", '~> 1.1.0'
+  spec.add_development_dependency 'mocha', '~> 1.1', '>= 1.1.0'
   
   spec.add_dependency "launchy", '~> 2.4', '>= 2.4.3'
 end
