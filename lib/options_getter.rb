@@ -1,6 +1,6 @@
 require 'optparse'
 
-class OptionsHelper
+class OptionsGetter
   def initialize(exiter)
     @exiter = exiter
   	@options = {exact: false}

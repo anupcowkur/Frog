@@ -3,13 +3,13 @@ require_relative 'exact_searcher'
 require_relative 'fuzzy_searcher'
 require 'browser_launcher'
 require 'exiter'
-require 'options_helper'
+require 'options_getter'
 require 'search_term_helper'
 require 'links_getter'
 
 class Starter
   def initialize(exiter,
-                 options_helper,
+                 options_getter,
                  search_term_helper,
                  links_getter,
                  exact_searcher,
@@ -17,7 +17,7 @@ class Starter
                  search_router,
                  browser_launcher)
     @exiter = exiter
-    @options_helper = options_helper
+    @options_getter = options_getter
     @search_term_helper = search_term_helper
     @links_getter = links_getter
     @exact_searcher = exact_searcher
@@ -27,7 +27,7 @@ class Starter
   end
 
   def start
-    options = @options_helper.get_options
+    options = @options_getter.get_options
 
     search_term = @search_term_helper.get_search_term
 

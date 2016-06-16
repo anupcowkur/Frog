@@ -1,5 +1,5 @@
 require 'test_helper'
-require 'options_helper'
+require 'options_getter'
 require 'exiter'
 
 class TestOptionsHelper < Minitest::Test
@@ -12,7 +12,7 @@ class TestOptionsHelper < Minitest::Test
       mock_exiter = Minitest::Mock.new
       mock_exiter.expect :exit_after_showing_help, nil
 
-      OptionsHelper.new(mock_exiter).get_options
+      OptionsGetter.new(mock_exiter).get_options
     
       assert_equal "Usage: droiddocs.rb [options] search_term\n    -e, --exact                      Search for the exact class\n    -h, --help                       Displays Help\n", $stdout.string
       mock_exiter.verify
@@ -24,7 +24,7 @@ class TestOptionsHelper < Minitest::Test
       ARGV.clear
       ARGV << "-e"
       
-      options = OptionsHelper.new(Exiter.new).get_options
+      options = OptionsGetter.new(Exiter.new).get_options
 
       assert_equal true, options[:exact]
     end

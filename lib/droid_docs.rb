@@ -9,7 +9,7 @@ module DroidDocs
     fuzzy_searcher = FuzzySearcher.new(exiter)
 
     Starter.new(exiter,
-                OptionsHelper.new(exiter),
+                OptionsGetter.new(exiter),
                 SearchTermHelper.new(exiter),
                 LinksGetter.new,
                 exact_searcher,
