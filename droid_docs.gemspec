@@ -23,8 +23,7 @@ Gem::Specification.new do |spec|
 
   all_files          = `git ls-files -z`.split("\x0")
   spec.files         = all_files.grep(%r{^(bin|lib|assets)/})
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.executables   << 'droid_docs'
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.12"
