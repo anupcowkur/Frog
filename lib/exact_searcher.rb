@@ -2,8 +2,8 @@ require 'constants'
 
 class ExactSearcher
 
-  def initialize(exiter)
-    @exiter = exiter
+  def initialize
+    @exiter = Exiter.new
   end
 
   def search (search_term, links)

@@ -5,7 +5,7 @@ module DroidDocs
   def self.start
     # Initialize dependencies and start the program
     exiter = Exiter.new
-    exact_searcher = ExactSearcher.new(exiter)
+    exact_searcher = ExactSearcher.new
     fuzzy_searcher = FuzzySearcher.new(exiter)
 
     Starter.new(exiter,
