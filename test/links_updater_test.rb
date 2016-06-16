@@ -47,7 +47,8 @@ class LinksUpdaterTest < Minitest::Test
     # Stub DateTime.now
     DateTime.stubs(:now).returns(DateTime.parse(@fake_time_now))
 
-    # Set expectations
+    # Set expectations:
+    # Expect that it'll not update links from website or overwrite the timestamp
     @links_updater.expects(:update_links_from_website).never
     @links_updater.expects(:update_timestamp).never
 
