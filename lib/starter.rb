@@ -5,13 +5,13 @@ require 'browser_launcher'
 require 'exiter'
 require 'options_helper'
 require 'search_term_helper'
-require 'links_helper'
+require 'links_getter'
 
 class Starter
   def initialize(exiter,
                  options_helper,
                  search_term_helper,
-                 links_helper,
+                 links_getter,
                  exact_searcher,
                  fuzzy_searcher,
                  search_router,
@@ -19,7 +19,7 @@ class Starter
     @exiter = exiter
     @options_helper = options_helper
     @search_term_helper = search_term_helper
-    @links_helper = links_helper
+    @links_getter = links_getter
     @exact_searcher = exact_searcher
     @fuzzy_searcher = fuzzy_searcher
     @search_router = search_router
@@ -31,7 +31,7 @@ class Starter
 
     search_term = @search_term_helper.get_search_term
 
-    links = @links_helper.get_links_from_file
+    links = @links_getter.get_links_from_file
 
     target_link = @search_router.delegate_to_appropriate_searcher(options[:exact], search_term, links)
 

@@ -11,7 +11,7 @@ module DroidDocs
     Starter.new(exiter,
                 OptionsHelper.new(exiter),
                 SearchTermHelper.new(exiter),
-                LinksHelper.new,
+                LinksGetter.new,
                 exact_searcher,
                 fuzzy_searcher,
                 SearchRouter.new(exact_searcher, fuzzy_searcher),

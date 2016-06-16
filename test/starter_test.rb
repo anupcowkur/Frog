@@ -6,7 +6,7 @@ require 'browser_launcher'
 require 'exiter'
 require 'options_helper'
 require 'search_term_helper'
-require 'links_helper'
+require 'links_getter'
 require 'starter'
 
 class StarterTest < Minitest::Test
@@ -31,7 +31,7 @@ class StarterTest < Minitest::Test
     mock_exiter = Minitest::Mock::new
     mock_options_helper = Minitest::Mock::new
     mock_search_term_helper = Minitest::Mock::new
-    mock_links_helper = Minitest::Mock::new
+    mock_links_getter = Minitest::Mock::new
     mock_exact_searcher = Minitest::Mock::new
     mock_fuzzy_searcher = Minitest::Mock::new
     mock_search_router = Minitest::Mock::new
@@ -44,7 +44,7 @@ class StarterTest < Minitest::Test
     # Set mock expectations
     mock_options_helper.expect :get_options, {exact: true}
     mock_search_term_helper.expect :get_search_term, mock_search_term
-    mock_links_helper.expect :get_links_from_file, mock_links
+    mock_links_getter.expect :get_links_from_file, mock_links
     mock_search_router.expect :delegate_to_appropriate_searcher, mock_target_link , [true, mock_search_term, mock_links]
     mock_browser_launcher.expect :launch, nil, [mock_target_link]
 
@@ -52,7 +52,7 @@ class StarterTest < Minitest::Test
     Starter.new(mock_exiter,
                 mock_options_helper,
                 mock_search_term_helper,
-                mock_links_helper,
+                mock_links_getter,
                 mock_exact_searcher,
                 mock_fuzzy_searcher,
                 mock_search_router,
@@ -61,7 +61,7 @@ class StarterTest < Minitest::Test
     # Verify expectations
     mock_options_helper.verify
     mock_search_term_helper.verify
-    mock_links_helper.verify
+    mock_links_getter.verify
     mock_search_router.verify
     mock_browser_launcher.verify
   end

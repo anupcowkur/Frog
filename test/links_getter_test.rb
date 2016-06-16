@@ -1,5 +1,5 @@
 require 'test_helper'
-require 'links_helper'
+require 'links_getter'
 
 class TestLinksHelper < Minitest::Test
 
@@ -8,7 +8,7 @@ class TestLinksHelper < Minitest::Test
     expected_links = file.read
     file.close
 
-    result_links = LinksHelper.new.get_links_from_file.to_s
+    result_links = LinksGetter.new.get_links_from_file.to_s
 
     assert_equal expected_links, result_links
   end
