@@ -1,6 +1,6 @@
 require 'exiter'
 
-class SearchTermHelper
+class SearchTermGetter
   def initialize(exiter)
     @exiter = exiter
   end

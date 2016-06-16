@@ -10,7 +10,7 @@ module DroidDocs
 
     Starter.new(exiter,
                 OptionsGetter.new(exiter),
-                SearchTermHelper.new(exiter),
+                SearchTermGetter.new(exiter),
                 LinksGetter.new,
                 exact_searcher,
                 fuzzy_searcher,
