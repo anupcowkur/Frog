@@ -15,7 +15,6 @@ require 'time'
 require 'net/http'
 
 module DroidDocs
-
   def self.start
     options = OptionsGetter.new.get_options
 

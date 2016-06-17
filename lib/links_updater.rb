@@ -1,7 +1,7 @@
 class LinksUpdater
   attr_reader :timestamp_file_path, :links_file_path
 
-  def initialize()
+  def initialize
     @timestamp_file_path = File.expand_path("../assets/last_updated.txt", File.dirname(__FILE__))
     @links_file_path = File.expand_path("../assets/lists.js", File.dirname(__FILE__))
   end
@@ -28,9 +28,11 @@ class LinksUpdater
   def update_links_from_website
     begin
       # Get the latest links from the website
+      puts "Updating docs to the latest and greatest..."
       response = Net::HTTP.get_response(URI.parse(Constants::LINKS_URL))
     rescue StandardError
       # Exit if links update fails
+      puts "Looks like there's an internet connection problem. Will try to update later."
       Exiter.new.exit_due_to_net_http_fail_during_links_update
       return
     end
@@ -42,5 +44,6 @@ class LinksUpdater
   private
   def update_timestamp
     File.write(@timestamp_file_path, "#{DateTime.now}")
+    puts "Docs updated"
   end
 end

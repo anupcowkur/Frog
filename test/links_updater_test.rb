@@ -29,8 +29,11 @@ class LinksUpdaterTest < Minitest::Test
     # Expect that fake timestamp will be written to last updated file path
     File.expects(:write).with(@timestamp_file_path, @fake_time_now)
 
-    # Call the method under test
-    @links_updater.update_links_if_needed
+    TestHelper.fake_io("") do
+      # Call the method under test
+      @links_updater.update_links_if_needed
+      assert_match "Updating docs to the latest and greatest...\nDocs updated", $stdout.string.chomp
+    end
   end
 
   def test_exits_if_update_fails_due_to_network_error
@@ -52,8 +55,11 @@ class LinksUpdaterTest < Minitest::Test
     # Set expectations:
     Exiter.any_instance.expects(:exit_due_to_net_http_fail_during_links_update)
 
-    # Call the method under test
-    @links_updater.update_links_if_needed
+    TestHelper.fake_io("") do
+      # Call the method under test
+      @links_updater.update_links_if_needed
+      assert_match "Looks like there's an internet connection problem. Will try to update later.", $stdout.string.chomp
+    end
   end
 
   def test_does_not_update_links_if_not_older_than_a_month
