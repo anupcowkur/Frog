@@ -9,13 +9,12 @@ class TestOptionsHelper < Minitest::Test
       ARGV.clear
       ARGV << "-h"
 
-      mock_exiter = Minitest::Mock.new
-      mock_exiter.expect :exit_after_showing_help, nil
+      Exiter.any_instance.expects(:exit_after_showing_help)
+      expected_stdout_string = "Usage: droiddocs.rb [options] search_term\n    -e, --exact                      Search for the exact class\n    -h, --help                       Displays Help\n"
 
-      OptionsGetter.new(mock_exiter).get_options
+      OptionsGetter.new.get_options
     
-      assert_equal "Usage: droiddocs.rb [options] search_term\n    -e, --exact                      Search for the exact class\n    -h, --help                       Displays Help\n", $stdout.string
-      mock_exiter.verify
+      assert_equal expected_stdout_string, $stdout.string
     end
   end
 
@@ -24,7 +23,7 @@ class TestOptionsHelper < Minitest::Test
       ARGV.clear
       ARGV << "-e"
       
-      options = OptionsGetter.new(Exiter.new).get_options
+      options = OptionsGetter.new.get_options
 
       assert_equal true, options[:exact]
     end

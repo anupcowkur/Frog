@@ -1,8 +1,8 @@
 require 'optparse'
 
 class OptionsGetter
-  def initialize(exiter)
-    @exiter = exiter
+  def initialize
+    @exiter = Exiter.new
   	@options = {exact: false}
     @options_parser = OptionParser.new do |opts|
       opts.banner = "Usage: droiddocs.rb [options] search_term"
