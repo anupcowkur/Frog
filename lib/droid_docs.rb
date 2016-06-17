@@ -4,11 +4,9 @@ module DroidDocs
 
   def self.start
     # Initialize dependencies and start the program
-    exiter = Exiter.new
-
-    Starter.new(exiter,
+    Starter.new(Exiter.new,
                 OptionsGetter.new,
-                SearchTermGetter.new(exiter),
+                SearchTermGetter.new,
                 LinksGetter.new,
                 ExactSearcher.new,
                 FuzzySearcher.new,
