@@ -1,8 +1,8 @@
 require 'constants'
 
 class FuzzySearcher
-  def initialize(exiter)
-    @exiter = exiter
+  def initialize
+    @exiter = Exiter.new
   end
 
   def search (search_term, links)
