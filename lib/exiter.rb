@@ -11,6 +11,10 @@ class Exiter
     abort "Sorry. It looks like you didn't enter the correct index"
   end
 
+  def exit_due_to_net_http_fail_during_links_update
+    exit
+  end
+
   def exit_after_showing_help
     exit
   end

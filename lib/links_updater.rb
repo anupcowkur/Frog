@@ -26,8 +26,14 @@ class LinksUpdater
 
   private
   def update_links_from_website
-    # Get the latest links from the website
-    response = Net::HTTP.get_response(URI.parse(Constants::LINKS_URL))
+    begin
+      # Get the latest links from the website
+      response = Net::HTTP.get_response(URI.parse(Constants::LINKS_URL))
+    rescue StandardError
+      # Exit if links update fails
+      Exiter.new.exit_due_to_net_http_fail_during_links_update
+      return
+    end
 
     # Write them to file
     File.write(@links_file_path, response.body)

@@ -27,6 +27,7 @@ class DroidDocsTest < Minitest::Test
     LinksGetter.any_instance.expects(:get_links_from_file).returns(mock_links)
     SearchRouter.any_instance.expects(:delegate_to_appropriate_searcher).with(true, mock_search_term, mock_links).returns(mock_target_link)
     BrowserLauncher.any_instance.expects(:launch).with(mock_target_link)
+    LinksUpdater.any_instance.expects(:update_links_if_needed)
 
     # Run the subject test
     DroidDocs.start

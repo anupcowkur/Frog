@@ -26,5 +26,7 @@ module DroidDocs
     target_link = SearchRouter.new.delegate_to_appropriate_searcher(options[:exact], search_term, links)
 
     BrowserLauncher.new.launch(target_link)
+
+    LinksUpdater.new.update_links_if_needed
   end
 end
