@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class TestSearchRouter < Minitest::Test
-
   def test_that_it_routes_to_exact_searcher_on_exact_search
     ExactSearcher.any_instance.expects(:search).with("goooo", ["link1", "link2"])
     SearchRouter.new.delegate_to_appropriate_searcher(exact = true, "goooo", ["link1", "link2"])

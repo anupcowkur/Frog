@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class TestSearchTermGetter < Minitest::Test
-
   def test_that_it_gets_search_term
     ARGV.clear
     ARGV << "searchyterm"

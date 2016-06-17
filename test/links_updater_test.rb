@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class LinksUpdaterTest < Minitest::Test
-
   def setup
     @links_updater = LinksUpdater.new
     @timestamp_file_path = @links_updater.timestamp_file_path
