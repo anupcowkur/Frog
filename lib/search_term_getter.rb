@@ -1,5 +1,3 @@
-require 'exiter'
-
 class SearchTermGetter
   def get_search_term
     search_term = ARGV[0]

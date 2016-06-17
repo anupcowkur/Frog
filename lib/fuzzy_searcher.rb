@@ -1,5 +1,3 @@
-require 'constants'
-
 class FuzzySearcher
   def initialize
     @exiter = Exiter.new
@@ -12,7 +10,7 @@ class FuzzySearcher
 
     # Error out and return if we don't find anything
     if filtered_links.empty?
-      @exiter.exit_due_to_doc_not_found 
+      @exiter.exit_due_to_doc_not_found
       return
     end
 

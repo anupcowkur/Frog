@@ -1,7 +1,4 @@
-require 'constants'
-
 class ExactSearcher
-
   def initialize
     @exiter = Exiter.new
   end
@@ -9,7 +6,7 @@ class ExactSearcher
   def search (search_term, links)
     # Grep the links array to exactly match our search term
     filtered_links = links.grep(/\/#{search_term}.html\"/i)
-    
+
     # Handle error and return if we don't find anything
     if filtered_links.empty?
       @exiter.exit_due_to_doc_not_found

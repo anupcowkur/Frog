@@ -1,5 +1,4 @@
 class SearchRouter
-
   def delegate_to_appropriate_searcher(exact, search_term, links)
     if exact
       # If it's an exact search

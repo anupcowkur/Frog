@@ -1,3 +1,19 @@
+# Get the project root
+lib = File.expand_path('../../lib', __FILE__)
+
+# Add project root to LOAD_PATH
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+# Require everything in lib so we don't have to require
+# them in each file
+Dir.glob(lib + '/*', &method(:require))
+
+# Require external and third party libs
+require 'optparse'
+require 'launchy'
+require 'time'
+require 'net/http'
+
 module DroidDocs
 
   def self.start

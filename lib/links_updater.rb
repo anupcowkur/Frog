@@ -1,9 +1,4 @@
-require 'time'
-require 'net/http'
-require 'constants'
-
 class LinksUpdater
-
   attr_reader :timestamp_file_path, :links_file_path
 
   def initialize()
