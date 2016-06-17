@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'browser_launcher'
 
 class BrowserLauncherTest < Minitest::Test
   def test_opens_browser

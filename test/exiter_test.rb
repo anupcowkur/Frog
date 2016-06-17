@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'exiter'
 
 class ExiterTest < Minitest::Test
 	def setup

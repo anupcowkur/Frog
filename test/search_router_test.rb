@@ -1,7 +1,4 @@
 require 'test_helper'
-require 'search_router'
-require 'exact_searcher'
-require 'fuzzy_searcher'
 
 class TestSearchRouter < Minitest::Test
 

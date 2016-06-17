@@ -1,6 +1,4 @@
 require 'test_helper'
-require 'search_term_getter'
-require 'exiter'
 
 class TestSearchTermGetter < Minitest::Test
 

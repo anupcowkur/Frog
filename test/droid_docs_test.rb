@@ -1,13 +1,4 @@
-require 'constants'
-require 'search_router'
-require 'exact_searcher'
-require 'fuzzy_searcher'
-require 'browser_launcher'
-require 'exiter'
-require 'options_getter'
-require 'search_term_getter'
-require 'links_getter'
-require 'droid_docs'
+require 'test_helper'
 
 class DroidDocsTest < Minitest::Test
 

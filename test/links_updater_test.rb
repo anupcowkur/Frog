@@ -1,8 +1,4 @@
 require 'test_helper'
-require 'links_updater'
-require 'time'
-require 'net/http'
-require 'constants'
 
 class LinksUpdaterTest < Minitest::Test
 

@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'links_getter'
 
 class TestLinksHelper < Minitest::Test
 

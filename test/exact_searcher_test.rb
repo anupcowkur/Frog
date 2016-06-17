@@ -1,6 +1,4 @@
 require 'test_helper'
-require 'exact_searcher'
-require 'exiter'
 
 class TestExactSearcher < Minitest::Test
   def setup

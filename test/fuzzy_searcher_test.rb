@@ -1,6 +1,4 @@
 require 'test_helper'
-require 'fuzzy_searcher'
-require 'exiter'
 
 class TestFuzzySearcher < Minitest::Test
   def setup

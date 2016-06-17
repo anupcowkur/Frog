@@ -1,6 +1,4 @@
 require 'test_helper'
-require 'options_getter'
-require 'exiter'
 
 class TestOptionsHelper < Minitest::Test
 
