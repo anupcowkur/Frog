@@ -15,7 +15,7 @@ require 'time'
 require 'net/http'
 require 'colorize'
 
-module DroidDocs
+module Frog
   def self.start
     options = OptionsGetter.new.get_options
 

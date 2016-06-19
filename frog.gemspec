@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'constants'
 
 Gem::Specification.new do |spec|
-  spec.name          = "droid_docs"
+  spec.name          = "frog"
   spec.version       = ::Constants::VERSION
   spec.authors       = ["Anup Cowkur"]
   spec.email         = ["anupcowkur89@gmail.com"]
 
-  spec.summary       = %q{Search Android developer docs through the command line!}
-  spec.homepage      = "https://github.com/anupcowkur/droid_docs."
+  spec.summary       = %q{Frog helps you jump to the right Android dev docs from the command line}
+  spec.homepage      = "https://github.com/anupcowkur/frog."
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
 
   all_files          = `git ls-files -z`.split("\x0")
   spec.files         = all_files.grep(%r{^(bin|lib|assets)/})
-  spec.executables   << 'droid_docs'
+  spec.executables   << 'frog'
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.12"

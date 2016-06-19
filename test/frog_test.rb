@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DroidDocsTest < Minitest::Test
+class FrogTest < Minitest::Test
   def test_that_it_has_a_version_number
     refute_nil Constants::VERSION
   end
@@ -30,6 +30,6 @@ class DroidDocsTest < Minitest::Test
     LinksUpdater.any_instance.expects(:update_links_if_needed)
 
     # Run the subject test
-    DroidDocs.start
+    Frog.start
   end
 end
