@@ -11,7 +11,7 @@ class ExiterTest < Minitest::Test
       @exiter.exit_due_to_no_search_term
     end
 
-    assert_equal "\e[0;31;49mYou need to provide a class to search for\e[0m", err.message
+    assert_equal "\e[0;31;49mYou need to provide something to search for\e[0m", err.message
     assert_equal 1, err.status
   end
 

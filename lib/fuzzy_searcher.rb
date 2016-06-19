@@ -58,7 +58,7 @@ class FuzzySearcher
   end
 
   def show_selection_options(links_hash)
-    puts "Enter the index of the class you want. ex: Enter 1 if you wish to select the first option.".green
+    puts "Enter the index of the docs you want. ex: Enter 1 if you wish to select the first option.".green
     links_hash.keys.each_with_index do |class_name, i|
       puts "#{i+1}: #{class_name}"
     end

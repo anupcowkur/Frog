@@ -1,6 +1,6 @@
 class Exiter
   def exit_due_to_no_search_term
-    abort "You need to provide a class to search for".red
+    abort "You need to provide something to search for".red
   end
 
   def exit_due_to_doc_not_found

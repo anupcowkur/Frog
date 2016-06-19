@@ -32,7 +32,8 @@ class LinksUpdaterTest < Minitest::Test
     TestHelper.fake_io("") do
       # Call the method under test
       @links_updater.update_links_if_needed
-      assert_match "\e[0;32;49mUpdating docs to the latest and greatest...\e[0m\n\e[0;32;49mDocs updated\e[0m", $stdout.string.chomp
+      assert_match "Indexing the latest docs...", $stdout.string.chomp
+      assert_match "Latest docs indexed!", $stdout.string.chomp
     end
   end
 
@@ -58,7 +59,7 @@ class LinksUpdaterTest < Minitest::Test
     TestHelper.fake_io("") do
       # Call the method under test
       @links_updater.update_links_if_needed
-      assert_match "Looks like there's an internet connection problem. Will try to update later.", $stdout.string.chomp
+      assert_match "Looks like there's an internet connection problem. Will try again later.", $stdout.string.chomp
     end
   end
 
