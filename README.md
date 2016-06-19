@@ -6,7 +6,9 @@ Frog is a command line tool to help you quickly jump to the right Android doc.
 
 ## Installation
 
-Make sure you [have ruby first](https://www.ruby-lang.org/en/documentation/installation/). (tested with ruby 2.3.0)
+Make sure you [have ruby first](https://www.ruby-lang.org/en/documentation/installation/). 
+
+Note: This library has been tested with `ruby 2.3.0`.
 
 And then execute:
 
