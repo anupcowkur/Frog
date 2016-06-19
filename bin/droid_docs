@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require 'droid_docs'
-puts DroidDocs.start
+DroidDocs.start
