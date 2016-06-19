@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["anupcowkur89@gmail.com"]
 
   spec.summary       = %q{Frog helps you jump to the right Android dev docs from the command line}
-  spec.homepage      = "https://github.com/anupcowkur/frog."
+  spec.homepage      = "https://github.com/anupcowkur/frog"
   spec.license       = "MIT"
 
   all_files          = `git ls-files -z`.split("\x0")
