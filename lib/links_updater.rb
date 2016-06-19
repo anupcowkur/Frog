@@ -28,11 +28,11 @@ class LinksUpdater
   def update_links_from_website
     begin
       # Get the latest links from the website
-      puts "Updating docs to the latest and greatest..."
+      puts "Updating docs to the latest and greatest...".green
       response = Net::HTTP.get_response(URI.parse(Constants::LINKS_URL))
     rescue StandardError
       # Exit if links update fails
-      puts "Looks like there's an internet connection problem. Will try to update later."
+      puts "Looks like there's an internet connection problem. Will try to update later.".red
       Exiter.new.exit_due_to_net_http_fail_during_links_update
       return
     end
@@ -44,6 +44,6 @@ class LinksUpdater
   private
   def update_timestamp
     File.write(@timestamp_file_path, "#{DateTime.now}")
-    puts "Docs updated"
+    puts "Docs updated".green
   end
 end

@@ -13,6 +13,7 @@ require 'optparse'
 require 'launchy'
 require 'time'
 require 'net/http'
+require 'colorize'
 
 module DroidDocs
   def self.start

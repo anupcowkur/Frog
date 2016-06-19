@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ExiterTest < Minitest::Test
   def setup
+    $stderr.stubs(:write)
     @exiter = Exiter.new
   end
 
@@ -10,7 +11,7 @@ class ExiterTest < Minitest::Test
       @exiter.exit_due_to_no_search_term
     end
 
-    assert_equal "You need to provide a class to search for", err.message
+    assert_equal "\e[0;31;49mYou need to provide a class to search for\e[0m", err.message
     assert_equal 1, err.status
   end
 
@@ -19,7 +20,7 @@ class ExiterTest < Minitest::Test
       @exiter.exit_due_to_doc_not_found
     end
 
-    assert_equal "Sorry. It looks like we couldn't find what you were looking for", err.message
+    assert_equal "\e[0;31;49mSorry. It looks like we couldn't find what you were looking for\e[0m", err.message
     assert_equal 1, err.status
   end
 
@@ -28,7 +29,7 @@ class ExiterTest < Minitest::Test
       @exiter.exit_due_to_incorrect_index
     end
 
-    assert_equal "Sorry. It looks like you didn't enter the correct index", err.message
+    assert_equal "\e[0;31;49mSorry. It looks like you didn't enter the correct index\e[0m", err.message
     assert_equal 1, err.status
   end
 

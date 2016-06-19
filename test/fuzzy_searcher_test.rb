@@ -15,7 +15,7 @@ class TestFuzzySearcher < Minitest::Test
   def test_that_it_displays_correct_options_on_finding_search_term
     TestHelper::fake_io("1") do
       FuzzySearcher.new.search("running", @links)
-      assert_equal "Enter the index of the class you want. ex: Enter 1 if you wish to select the first option.\n1: android.app.ActivityManager.RunningAppProcessInfo\n2: android.app.ActivityManager.RunningServiceInfo\n3: android.app.ActivityManager.RunningTaskInfo\n", $stdout.string
+      assert_equal "\e[0;32;49mEnter the index of the class you want. ex: Enter 1 if you wish to select the first option.\e[0m\n1: android.app.ActivityManager.RunningAppProcessInfo\n2: android.app.ActivityManager.RunningServiceInfo\n3: android.app.ActivityManager.RunningTaskInfo\n", $stdout.string
     end
   end
 

@@ -32,7 +32,7 @@ class LinksUpdaterTest < Minitest::Test
     TestHelper.fake_io("") do
       # Call the method under test
       @links_updater.update_links_if_needed
-      assert_match "Updating docs to the latest and greatest...\nDocs updated", $stdout.string.chomp
+      assert_match "\e[0;32;49mUpdating docs to the latest and greatest...\e[0m\n\e[0;32;49mDocs updated\e[0m", $stdout.string.chomp
     end
   end
 
