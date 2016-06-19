@@ -19,9 +19,9 @@ class LinksUpdater
 
     last_updated = DateTime.parse(timestamp)
 
-    one_month_from_last_updated =  last_updated + 30
+    one_week_from_last_updated =  last_updated + 7
 
-    return DateTime.now  > one_month_from_last_updated
+    return DateTime.now  > one_week_from_last_updated
   end
 
   private

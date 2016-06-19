@@ -8,8 +8,8 @@ class LinksUpdaterTest < Minitest::Test
     @fake_time_now = "2016-06-15T15:13:18+05:30"
   end
 
-  def test_updates_links_if_older_than_a_month
-    fake_last_updated = "2016-02-15T15:13:18+05:30"
+  def test_updates_links_if_older_than_a_week
+    fake_last_updated = "2016-06-07T15:13:18+05:30"
     fake_links = "fake links"
 
     # Stub timestamp reading from file
@@ -37,7 +37,7 @@ class LinksUpdaterTest < Minitest::Test
   end
 
   def test_exits_if_update_fails_due_to_network_error
-    fake_last_updated = "2016-02-15T15:13:18+05:30"
+    fake_last_updated = "2016-06-07T15:13:18+05:30"
     fake_links = "fake links"
 
     # Stub timestamp reading from file
@@ -62,7 +62,7 @@ class LinksUpdaterTest < Minitest::Test
     end
   end
 
-  def test_does_not_update_links_if_not_older_than_a_month
+  def test_does_not_update_links_if_not_older_than_a_week
     fake_last_updated = "2016-06-12T15:13:18+05:30"
 
     # Stub timestamp reading from file
