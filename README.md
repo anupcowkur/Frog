@@ -1,5 +1,5 @@
 # Deprecated
-This tool is no longer maintained. It will work fine but no new issues, feature requests etc will be accepted. You can still use the source as reference to make your own custom CLI tools.
+This tool is no longer maintained. You can still use the source as reference to make your own custom CLI tools.
 
 
 # Frog
